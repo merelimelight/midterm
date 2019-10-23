@@ -14,3 +14,8 @@ export async function fetchMusic(page) {
   let response = await fetch(`${API_URL}/tracks?page=${page}`);
   return response.json();
 }
+
+// export async function fetchNumPages() {
+//     let response = await fetch(`${API_URL}/tracks?page=1`);
+//     return response.json();
+//   }

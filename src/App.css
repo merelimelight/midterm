@@ -1,9 +1,5 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
+  text-align: left;
 }
 
 .App-header {
@@ -19,4 +15,21 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+.info {
+  background-color: black;
+  text-decoration-color: blanchedalmond;
+  float: right;
+  clear: both;
+}
+
+nav {
+  float: left;
+  clear: both;
+}
+
+.search {
+  float: right;
+  clear: both;
 }

@@ -14,7 +14,11 @@ export default class SearchForm extends React.Component {
   };
   handleSearch = event => {
     event.preventDefault();
-    this.props.onSearch(this.state.searchValue);
+
+    if (this.state.searchValue <= 18 && this.state.searchValue > 0) {
+      this.props.onSearch(this.state.searchValue);
+    } else {
+    }
   };
   render() {
     return (

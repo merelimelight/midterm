@@ -9,6 +9,7 @@ export default class PlaylistPage extends React.Component {
 
     this.state = {
       songs: [],
+      page: 1,
       loading: true
     };
   }
@@ -16,7 +17,7 @@ export default class PlaylistPage extends React.Component {
   async componentDidMount() {
     let songs = await fetchMusic();
 
-    this.setState({ songs, loading: false });
+    this.setState({ songs, page, loading: false });
   }
 
   render() {
