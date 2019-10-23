@@ -7,18 +7,31 @@ import {
 } from "react-router-dom";
 import PlaylistPage from "./PlaylistPage";
 import PageNotFound from "./PageNotFound";
-import { fetchPlaylists } from "./MusicAPI";
+import Loading from "./Loading";
+import { fetchPlaylists, fetchMusic } from "./MusicAPI";
 import "./App.css";
+import SongCard from "./SongCard";
+import SearchForm from "./SearchForm";
 
 export default class App extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      playlistIDs: [],
+      playlists: [],
+      music: [],
+      page: 1,
       loading: true
     };
   }
+
+  handleSearch = async searchValue => {
+    this.setState({ loading: true });
+
+    let [music] = await Promise.all([fetchMusic(searchValue)]);
+
+    this.setState({ music, loading: false });
+  };
 
   async componentDidMount() {
     // let playlistID = 1;
@@ -28,13 +41,20 @@ export default class App extends React.Component {
     //   playlistID++;
     // }
 
-    const mappingFunction = playlist => playlist.id;
+    // const mappingFunction = playlist => playlist.id;
 
-    const playlists = await fetchPlaylists();
+    // const playlists = await fetchPlaylists();
 
-    const playlistIDs = playlists.map(mappingFunction);
+    // const playlistIDs = playlists.map(mappingFunction);
 
-    this.setState({ playlistIDs, loading: false });
+    // this.setState({ playlistIDs, loading: false });
+
+    let [playlists, music] = await Promise.all([
+      fetchPlaylists(),
+      fetchMusic(this.state.page)
+    ]);
+
+    this.setState({ playlists, music, loading: false });
   }
 
   render() {
@@ -42,11 +62,14 @@ export default class App extends React.Component {
       <Router>
         <h1>My Music App</h1>
 
+        <p>Total Pages: {this.state.music.meta.pages}</p>
+
         <nav>
           <ul>
             <li>
               <NavLink to="/">Library</NavLink>
             </li>
+            <p>-----------------</p>
             <li>
               <NavLink to="/playlists/1/tracks">Music</NavLink>
             </li>
@@ -68,9 +91,6 @@ export default class App extends React.Component {
             <li>
               <NavLink to="/playlists/7/tracks">Movies</NavLink>
             </li>
-            <li>
-              <NavLink to="/playlists/1/tracks">Music</NavLink>
-            </li>
           </ul>
         </nav>
 
@@ -83,6 +103,20 @@ export default class App extends React.Component {
 
           <Route component={PageNotFound} />
         </Switch>
+
+        <SearchForm onSearch={this.handleSearch} />
+
+        <div>
+          <h3>Name</h3>
+          <h3>Minutes</h3>
+          {this.state.loading ? (
+            <Loading />
+          ) : (
+            this.state.music.map(song => {
+              return <SongCard song={this.state.music} key={song.id} />;
+            })
+          )}
+        </div>
       </Router>
     );
   }

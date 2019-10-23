@@ -1,12 +1,12 @@
 import React from "react";
 
 export default function SongCard(props) {
-  let { name, description } = props.song;
+  let { attributes } = props.song.data.attributes;
 
   return (
     <div className="song-card">
-      <p>{name}</p>
-      <p>{description}</p>
+      <p>{attributes.name}</p>
+      <p>{attributes.milliseconds}</p>
     </div>
   );
 }
