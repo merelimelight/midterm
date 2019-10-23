@@ -35,7 +35,7 @@ export default class App extends React.Component {
       let [music] = await Promise.all([fetchMusic(searchValue)]);
       this.setState({ music, loading: false });
     } else {
-      <p>No tracks found</p>;
+      // <p>No tracks found</p>;
     }
   };
 
@@ -61,7 +61,7 @@ export default class App extends React.Component {
       // fetchNumPages()
     ]);
 
-    this.setState({ playlists, music, pages, loading: false });
+    this.setState({ playlists, music, loading: false });
   }
 
   render() {

@@ -1,3 +1,9 @@
+This website won't show anything
+I'm sincerely sorry for my performance on this midterm, and for the pain it will be to grade
+I won't make excuses, and I will work like crazy on the final project
+
+sharp-event.surge.sh
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
