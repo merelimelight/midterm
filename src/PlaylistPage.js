@@ -3,6 +3,9 @@ import { fetchMusic } from "./MusicAPI";
 import Loading from "./Loading";
 import SongCard from "./SongCard";
 
+// Realized that this doesn't appropriately handle the props from App.js,
+// but I don't have the time to go back and restructure it before time's up :'(
+
 export default class PlaylistPage extends React.Component {
   constructor(props) {
     super(props);
