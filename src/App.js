@@ -5,6 +5,8 @@ import {
   NavLink,
   Switch
 } from "react-router-dom";
+import PlaylistPage from "./PlaylistPage";
+import PageNotFound from "./PageNotFound";
 import { fetchPlaylists } from "./MusicAPI";
 import "./App.css";
 
@@ -13,24 +15,30 @@ export default class App extends React.Component {
     super();
 
     this.state = {
-      playlists: [],
+      playlistIDs: [],
       loading: true
     };
   }
 
   async componentDidMount() {
-    let playlistID = 1;
+    // let playlistID = 1;
 
-    while (playlistID <= 18) {
-      let playlists = await fetchPlaylists(playlistID);
-      playlistID++;
-    }
+    // while (playlistID <= 18) {
+    //   let playlists = await fetchPlaylists(playlistID);
+    //   playlistID++;
+    // }
 
-    this.setState({ playlists, loading: false });
+    const mappingFunction = playlist => playlist.id;
+
+    const playlists = await fetchPlaylists();
+
+    const playlistIDs = playlists.map(mappingFunction);
+
+    this.setState({ playlistIDs, loading: false });
   }
 
   render() {
-    const playlists = this.return(
+    return (
       <Router>
         <h1>My Music App</h1>
 

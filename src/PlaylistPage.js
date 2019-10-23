@@ -1,8 +1,8 @@
 import React from "react";
 import { fetchMusic } from "./MusicAPI";
 import Loading from "./Loading";
+import SongCard from "./SongCard";
 import { Route, NavLink, Switch } from "react-router-dom";
-import Loading from "./Loading";
 
 export default class PlaylistPage extends React.Component {
   constructor(props) {
