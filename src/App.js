@@ -45,7 +45,31 @@ export default class App extends React.Component {
         <nav>
           <ul>
             <li>
-              <NavLink to="/playlists/:id/tracks">Repos</NavLink>
+              <NavLink to="/">Library</NavLink>
+            </li>
+            <li>
+              <NavLink to="/playlists/1/tracks">Music</NavLink>
+            </li>
+            <li>
+              <NavLink to="/playlists/2/tracks">Movies</NavLink>
+            </li>
+            <li>
+              <NavLink to="/playlists/3/tracks">TV Shows</NavLink>
+            </li>
+            <li>
+              <NavLink to="/playlists/4/tracks">Audiobooks</NavLink>
+            </li>
+            <li>
+              <NavLink to="/playlists/5/tracks">90's Music</NavLink>
+            </li>
+            <li>
+              <NavLink to="/playlists/6/tracks">Audiobooks</NavLink>
+            </li>
+            <li>
+              <NavLink to="/playlists/7/tracks">Movies</NavLink>
+            </li>
+            <li>
+              <NavLink to="/playlists/1/tracks">Music</NavLink>
             </li>
           </ul>
         </nav>
